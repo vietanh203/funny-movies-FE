@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Icon } from 'react-icons-kit'
+import { home } from 'react-icons-kit/icomoon/home'
+import MoviesList from "./components/list-movies.component";
+import Signin from "./components/signin.component";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {  
+  render() {
+    return (
+      <Router>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+          <a className="navbar-brand" href="#"><Icon size={40} icon={home}></Icon></a>
+          <Link to="/" ><h1> Funny Movies</h1></Link>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav mr-auto">
+            </ul>
+            <Signin/>
+          </div>
+        </nav>
+        <hr/>
+        <div className="container-fluid">
+          <div id="center-block">
+              <MoviesList />
+          </div>
+        </div>
+      </Router>
+    );
+  }
 }
 
 export default App;
